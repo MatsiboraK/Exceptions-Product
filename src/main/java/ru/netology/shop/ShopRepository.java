@@ -15,6 +15,10 @@ public class ShopRepository {
     }
 
     public void add(Product product) {
+        Product existId = findById(product.getId());
+        if (existId != null) {
+            throw new AlreadyExistsException(product.getId());
+        }
         products = addToArray(products, product);
     }
 

@@ -37,4 +37,29 @@ public class ShopRepositoryTest {
         });
     }
 
+    @Test
+    public void shouldAddElement() {
+        repo.add(product1);
+        repo.add(product2);
+        repo.add(product3);
+        repo.add(product4);
+
+        Product[] expected = {product1, product2, product3, product4};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldThrowWhenTryingToAddAnElement() {
+        repo.add(product1);
+        repo.add(product2);
+        repo.add(product3);
+        repo.add(product4);
+
+
+        Assertions.assertThrows(AlreadyExistsException.class, () -> {
+            repo.add(product4);
+        });
+    }
 }
