@@ -1,4 +1,5 @@
 package ru.netology.shop;
+
 import java.util.Objects;
 
 public class Product {
